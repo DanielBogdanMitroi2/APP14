@@ -1,5 +1,7 @@
-apply(plugin = "com.android.application")
-apply(plugin = "com.google.gms.google-services")
+plugins {
+    id("com.android.application")
+    id("com.google.gms.google-services")
+}
 
 android {
     namespace = "com.example.app14"
@@ -16,7 +18,7 @@ android {
     }
 
     buildTypes {
-        getByName("release") {
+        release {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),

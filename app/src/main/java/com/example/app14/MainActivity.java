@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity implements EstudianteAdapter.OnEstudianteActionListener {
 
@@ -65,21 +66,43 @@ public class MainActivity extends AppCompatActivity implements EstudianteAdapter
     }
 
     private boolean datosValidos() {
-        if (TextUtils.isEmpty(etNombre.getText().toString().trim())
-                || TextUtils.isEmpty(etEmail.getText().toString().trim())
-                || TextUtils.isEmpty(etEdad.getText().toString().trim())) {
+        String nombre = etNombre.getText().toString().trim();
+        String email = etEmail.getText().toString().trim();
+        String edad = etEdad.getText().toString().trim();
+
+        // Verificar campos obligatorios
+        if (TextUtils.isEmpty(nombre) || TextUtils.isEmpty(email) || TextUtils.isEmpty(edad)) {
             Toast.makeText(this, R.string.msg_campos_obligatorios, Toast.LENGTH_SHORT).show();
             return false;
         }
 
+        // Validar nombre (mínimo 3 letras)
+        if (nombre.length() < 3) {
+            Toast.makeText(this, "El nombre debe tener al menos 3 letras", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        // Validar email
+        if (!isValidEmail(email)) {
+            Toast.makeText(this, "El email debe contener @ y terminar en .com", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        // Validar edad
         try {
-            Integer.parseInt(etEdad.getText().toString().trim());
+            Integer.parseInt(edad);
         } catch (NumberFormatException e) {
             Toast.makeText(this, R.string.msg_edad_invalida, Toast.LENGTH_SHORT).show();
             return false;
         }
 
         return true;
+    }
+
+    private boolean isValidEmail(String email) {
+        // Patrón para validar: debe contener @ y terminar en .com
+        String emailPattern = "^[^@\\s]+@[^@\\s]+\\.com$";
+        return Pattern.matches(emailPattern, email);
     }
 
     private Estudiante obtenerEstudianteFormulario(String id) {

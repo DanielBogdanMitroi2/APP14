@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">APP14</string>
+    <string name="hint_nombre">Nombre</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_edad">Edad</string>
+    <string name="btn_agregar">Agregar</string>
+    <string name="btn_actualizar">Actualizar</string>
+    <string name="btn_eliminar">Eliminar</string>
+    <string name="btn_limpiar">Limpiar</string>
+    <string name="btn_editar">Editar</string>
+    <string name="label_nombre">Nombre: %1$s</string>
+    <string name="label_email">Email: %1$s</string>
+    <string name="label_edad">Edad: %1$d</string>
+    <string name="msg_campos_obligatorios">Completa todos los campos.</string>
+    <string name="msg_edad_invalida">La edad debe ser numérica.</string>
+    <string name="msg_error_generico">No se pudo completar la operación.</string>
+    <string name="msg_agregado">Estudiante agregado.</string>
+    <string name="msg_actualizado">Estudiante actualizado.</string>
+    <string name="msg_eliminado">Estudiante eliminado.</string>
+    <string name="msg_error_lectura">Error al leer estudiantes.</string>
+    <string name="msg_selecciona_estudiante">Selecciona un estudiante primero.</string>
+    <string name="msg_editar_estudiante">Estudiante seleccionado para edición.</string>
+</resources>
